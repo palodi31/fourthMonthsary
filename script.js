@@ -49,3 +49,37 @@ document.addEventListener("DOMContentLoaded", () => {
     backBtn.addEventListener("click", goHome);
   }
 });
+
+// Polaroid enlarge modal
+const polaroids = document.querySelectorAll(".polaroid");
+const modal = document.getElementById("polaroid-modal");
+const modalImg = document.getElementById("modal-img");
+const modalCaption = document.getElementById("modal-caption");
+const modalClose = document.querySelector(".modal-close");
+
+polaroids.forEach((card) => {
+  card.addEventListener("click", () => {
+    const imgSrc = card.dataset.img;
+    const caption = card.dataset.caption;
+
+    modalImg.src = imgSrc;
+    modalCaption.textContent = caption;
+
+    modal.style.display = "flex";
+  });
+});
+
+// Close modal
+modalClose.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
+// Close when clicking outside modal content
+modal.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
+});
+
+
+
